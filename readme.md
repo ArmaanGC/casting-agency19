@@ -48,42 +48,28 @@ Auth0 details used during the testing:
 URL where the project is hosted via heroku - https://casting-agency19.herokuapp.com/
 
 API Endpoints for the project:
-GET '/books' 
-    - Lists all the books available in the database.
-    - Requires Authorization header with appropriate permission
-    - Body is not required
+Endpoints:
 
-GET '/authors' 
-    - Lists all the authors available in the database.
-    - Requires Authorization header with appropriate permission
-    - Body is not required
+GET /actors
+returns a list of all actors
 
-PATCH '/book/edit' 
-    - Edit the book present in the database.
-    - Requires Authorization header with appropriate permission
-    - Body is required in the below json format
-        {
-            "id": 1,
-            "title":"a man called ove",
-            "summary":"a brief summary of the book",
-            "book_author":<book author id>
-        }
-    - Returns success or error
+GET /movies
+returns a list of all movies
 
-POST '/book/new'
-    - Creates a new book in the database
-    - Requires Authorization header with appropriate permission
-    - Body is required in the below json format
-        {
-            "id": 1,
-            "title":"a man called ove",
-            "summary":"a brief summary of the book",
-            "book_author":<book author id>
-        }
-    - Returns success or error
+POST /actors
+create a new actor
 
-DELETE '/book/<id>'
-    - Deletes a given book from the database
-    - Requires Authorization header with appropriate permission
-    - Returns success or error
+POST /movies
+create a new movie
 
+PATCH /actors/<int:actor_id>
+update an existing actor
+
+PATCH /movies/<int:movie_id>
+update an existing movie
+
+DELETE /actors/<int:actor_id>
+delete an existing actor
+
+DELETE /movies/<int:movie_id>
+delete an existing movie
