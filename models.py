@@ -4,14 +4,15 @@ from flask_sqlalchemy import SQLAlchemy
 import json
 from datetime import date
 
-database_path = os.environ['DATABASE_URL']
-if database_path.startswith("postgres://"):
-  database_path = database_path.replace("postgres://", "postgresql://", 1)
+#database_path = os.environ['DATABASE_URL']
+# if database_path.startswith("postgres://"):
+#   database_path = database_path.replace("postgres://", "postgresql://", 1)
 
 db = SQLAlchemy()
 
-def setup_db(app, database_path=database_path):
-    app.config["SQLALCHEMY_DATABASE_URI"] = database_path
+def setup_db(app):
+    #hardcoding databse url as it is not getting picked while running db init command
+    app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://pdwptvgutkzryv:9412ade8f0b38973cf7d7d1219e9673d588c89e0f92eac3a5a1ae81eaefa2a9f@ec2-54-236-156-167.compute-1.amazonaws.com:5432/d6hmdtl72hg1j"
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.app = app
     db.init_app(app)
